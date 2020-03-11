@@ -1,0 +1,13 @@
+[package]
+name = "rust_figlet"
+version = "0.1.0"
+authors = ["KanarekLife <kanareklife@gmail.com>"]
+edition = "2018"
+repository = "https://github.com/KanarekLife"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = {version = "0.10.4", features = ["blocking"]}
+dirs = "2.0.2"
+rand = "0.7.3"
