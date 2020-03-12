@@ -9,17 +9,22 @@ mod figlet;
 mod network;
 
 fn main() {
+    let mut already_downloaded = false;
     if !Path::new(get_directory().as_os_str()).exists() {
         std::fs::create_dir(get_directory()).unwrap();
+        network::update_fonts();
+        already_downloaded = true;
     }
     let args: Vec<String> = env::args().collect();
-    if args.contains(&"--help".to_string()) {
+    if args.len() == 1 {
+        display_app_help()
+    }else if args.contains(&"--help".to_string()) {
         display_app_help();
     }else if args.contains(&"--version".to_string()) {
         display_app_info();
     }else if args.contains(&"--list-fonts".to_string()) {
         list_fonts();
-    }else if args.contains(&"--update".to_string()) {
+    }else if args.contains(&"--update".to_string()) && !already_downloaded {
         network::update_fonts();
     }else {
         let mut font = String::from("big");
