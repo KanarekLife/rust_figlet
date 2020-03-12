@@ -1,5 +1,5 @@
 use std::env;
-use std::path::{PathBuf};
+use std::path::{PathBuf, Path};
 use std::process::exit;
 use rand::Rng;
 
@@ -9,7 +9,9 @@ mod figlet;
 mod network;
 
 fn main() {
-    std::fs::create_dir(get_directory());
+    if !Path::new(get_directory().as_os_str()).exists() {
+        std::fs::create_dir(get_directory()).unwrap();
+    }
     let args: Vec<String> = env::args().collect();
     if args.contains(&"--help".to_string()) {
         display_app_help();
@@ -20,22 +22,28 @@ fn main() {
     }else if args.contains(&"--update".to_string()) {
         network::update_fonts();
     }else {
-        let mut font = "big";
+        let mut font = String::from("big");
         let mut random = false;
-        if args.contains(&"--font".to_string()) {
-            let position = args.iter().position(|r| r == "--font").unwrap();
+        let mut argscopy = args.clone();
+        argscopy.remove(0);
+        if argscopy.contains(&"--font".to_string()) {
+            let position = argscopy.iter().position(|r| r == "--font").unwrap();
             if args.len() > (position+1) {
-                font = args.iter().nth(position+1).unwrap();
+                font = argscopy.iter().nth(position + 1).unwrap().clone();
+                argscopy.remove(position+1);
+                argscopy.remove(position);
             } else {
                 println!("No font provided!!!");
                 exit(1);
             }
 
         }
-        if args.contains(&"--random".to_string()) {
+        if argscopy.contains(&"--random".to_string()) {
             random = true;
+            let position = argscopy.iter().position(|r| r == "--random").unwrap();
+            argscopy.remove(position);
         }
-        display_output("sample", font, random)
+        display_output(&argscopy.join(" "), &font, random);
     }
 }
 
@@ -87,7 +95,7 @@ fn display_output(text: &str, font: &str, random : bool) {
             }
         }
     }
-    let font_file = std::fs::File::open(path).expect("Font file not found! Update fonts using --update!");
+    let font_file = std::fs::File::open(&path).expect("Font file not found! Update fonts using --update!");
     let reader = std::io::BufReader::new(font_file);
     let font = figlet::Font::new(reader);
     println!("{}",font.parse_text(text));

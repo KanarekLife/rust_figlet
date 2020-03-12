@@ -32,7 +32,7 @@ impl Font {
             for j in 0..letter_height {
                 buffer.clear();
                 reader.read_line(&mut buffer).expect("Couldn't read the line!");
-                let mut line = buffer.replace('$', "");
+                let mut line = buffer.replace('$', " ");
                 if j + 1 == letter_height {
                     if letter_height == 1 {
                         line.remove(line.len()-1);

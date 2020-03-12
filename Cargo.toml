@@ -1,6 +1,6 @@
 [package]
 name = "rust_figlet"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["KanarekLife <kanareklife@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/KanarekLife"
