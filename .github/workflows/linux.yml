@@ -19,6 +19,12 @@ jobs:
     - name: Install build-essential and libss-dev
       run: sudo apt-get update && sudo apt-get install build-essential libssl-dev pkg-config -y
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --release --verbose
     - name: Test
       run: cargo test --verbose
+    - name: Upload compiled program
+      uses: actions/upload-artifact@v1
+      with:
+        name: linux
+        path: ./target/release/rust_figlet
+    

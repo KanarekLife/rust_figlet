@@ -17,4 +17,11 @@ jobs:
         toolchain: stable
         override: true
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --release --verbose
+    - name: Test
+      run: cargo test --verbose
+    - name: Upload compiled program
+      uses: actions/upload-artifact@v1
+      with:
+        name: linux
+        path: ./target/release/rust_figlet
