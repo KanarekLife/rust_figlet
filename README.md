@@ -1,3 +1,7 @@
+![linux](https://github.com/KanarekLife/rust_figlet/workflows/linux/badge.svg)
+![windows](https://github.com/KanarekLife/rust_figlet/workflows/windows/badge.svg)
+![macos](https://github.com/KanarekLife/rust_figlet/workflows/macos/badge.svg)
+
 # rust_figlet
 Small program written in rust to work as figlet replacement for all available major platforms.
 
