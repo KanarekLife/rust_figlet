@@ -17,7 +17,7 @@ jobs:
         toolchain: stable
         override: true
     - name: Install build-essential and libss-dev
-      run: apt-get update && apt-get install build-essential libssl-dev pkg-config -y
+      run: sudo apt-get update && sudo apt-get install build-essential libssl-dev pkg-config -y
     - name: Build
       run: cargo build --verbose
     - name: Test
