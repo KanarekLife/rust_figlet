@@ -23,5 +23,5 @@ jobs:
     - name: Upload compiled program
       uses: actions/upload-artifact@v1
       with:
-        name: linux
-        path: ./target/release/rust_figlet
+        name: windows
+        path: ./target/release/rust_figlet.exe
