@@ -3,7 +3,7 @@ name = "rust_figlet"
 version = "0.1.1"
 authors = ["KanarekLife <kanareklife@gmail.com>"]
 edition = "2018"
-repository = "https://github.com/KanarekLife"
+repository = "https://github.com/KanarekLife/rust_figlet"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
