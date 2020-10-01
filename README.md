@@ -6,9 +6,17 @@
 Small program written in rust to work as figlet replacement for all available major platforms.
 
 ## How to install it?
+### Downloading binary
 To download binary head into 'Releases' tab, select your os, unzip it and just run executable. It is
 recommended to place this binary in folder that is in your PATH variable. Then just run it via './rust_figlet'
  or './rust_figlet.exe'.
+ 
+### Installing via cargo
+If you have rust compiler and cargo installed on your system, installing rust_figlet is as easy as typing:
+```sh
+cargo install --git https://github.com/KanarekLife/rust_figlet
+```
+Cargo will automatically compile and install rust_figlet in your system!
  
  ## How to compile it?
  1. `git clone https://github.com/KanarekLife/rust_figlet`
